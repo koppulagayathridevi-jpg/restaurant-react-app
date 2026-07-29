@@ -1,25 +1,39 @@
+import { useContext } from "react";
 import "./MenuCard.css";
+import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
-function MenuCard({ image, title, description, price }) {
+function MenuCard({ item }) {
+  const { addToCart } = useContext(CartContext);
+  const navigate=useNavigate();
+   const handleAddToCart = () => {
+    addToCart(item);
+    navigate("/cart");
+  };
 
   return (
     <div className="menu-card">
 
-      <img src={image} alt={title} />
+      <img src={item.image} alt={item.name} />
 
-      <div className="menu-content">
-        <h3>{title}</h3>
+      <div className="card-body">
 
-        <p>{description}</p>
+        <h3>{item.name}</h3>
 
-        <h4>{price}</h4>
+        <p>{item.description}</p>
 
-        <button className='order-btn'>Order Now</button>
+        <div className="card-info">
+          <span>⭐ {item.rating}</span>
+          <span className="price">₹{item.price}</span>
+        </div>
+
+        <button onClick={() => addToCart(item)}>
+          🛒 Add to Cart
+        </button>
+
       </div>
 
     </div>
-    
-
   );
 }
 

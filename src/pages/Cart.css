@@ -1,0 +1,198 @@
+/* Background */
+
+.cart-page{
+    min-height:100vh;
+    background:#f8f9fa;
+    padding:50px 8%;
+}
+
+/* Heading */
+
+.cart-title{
+    text-align:center;
+    color:#8B2E21;
+    font-size:45px;
+    margin-bottom:40px;
+    font-weight:700;
+}
+
+/* Empty Cart */
+
+.empty-cart{
+    text-align:center;
+    font-size:25px;
+    color:#777;
+    margin-top:100px;
+}
+
+/* Container */
+
+.cart-container{
+    max-width:1100px;
+    margin:auto;
+}
+
+/* Card */
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.cart-item:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+/* Image */
+
+.cart-image{
+    width:150px;
+    height:120px;
+    border-radius:15px;
+    object-fit:cover;
+}
+
+/* Details */
+
+.item-details{
+    flex:1;
+    margin-left:25px;
+}
+
+.item-details h3{
+    color:#222;
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.item-details p{
+    color:#666;
+    font-size:17px;
+    margin-bottom:12px;
+}
+
+/* Quantity */
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.quantity button{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#8B2E21;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.quantity button:hover{
+    background:#ff7b00;
+}
+
+.quantity span{
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* Right */
+
+.cart-right{
+    text-align:right;
+}
+
+.cart-right h2{
+    color:#ff6b00;
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+/* Remove */
+
+.remove-btn{
+    background:#e53935;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.remove-btn:hover{
+    background:#b71c1c;
+}
+
+/* Checkout */
+
+.checkout{
+    margin-top:40px;
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.checkout h2{
+    display:flex;
+    justify-content:space-between;
+    font-size:32px;
+    color:#222;
+    margin-bottom:25px;
+}
+
+.checkout button{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:50px;
+    background:#8B2E21;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.checkout button:hover{
+    background:#ff7b00;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.cart-item{
+    flex-direction:column;
+    text-align:center;
+}
+
+.item-details{
+    margin:20px 0;
+}
+
+.cart-right{
+    text-align:center;
+    margin-top:20px;
+}
+
+.checkout h2{
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
+}
+
+}

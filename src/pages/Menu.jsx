@@ -1,76 +1,62 @@
 
-import Navbar from "../components/Navbar";
+import React, { useState } from "react";
+import "./Menu.css";
+
+import menuItems from "../data/MenuData";
 import MenuCard from "../components/MenuCard";
-import Footer from "../components/Footer";
-
-import biriyani from "../assets/images/biriyani.jpg";
-import meals from "../assets/images/meals.jpg";
-import fish from "../assets/images/fish-curry.jpg";
-import naan from "../assets/images/butter-nons.png";
-
-import paneer from "../assets/images/paneer.jpg";
-import prawns from "../assets/images/prawns.jpg";
-
 
 function Menu() {
-   
+  const [category, setCategory] = useState("All");
+  const [search, setSearch] = useState("");
+ 
+  const filteredItems = menuItems.filter((item) => {
+  const categoryMatch =
+    category === "All" || item.category === category;
+
+  const searchMatch = item.name
+    .toLowerCase()
+    .includes(search.toLowerCase());
+
+  return categoryMatch && searchMatch;
+});
   return (
-    <>
-      <Navbar />
+    <section className="menu-section">
+      
 
-      <section className="menu-section">
+      <h1>Our Special Menu</h1>
 
-        <h1>Our Special Menu</h1>
-  
+    
 
-        <div className="menu-grid">
+      <div className="categories">
+  {[
+    "All",
+    "Veg",
+    "Non-Veg",
+    "Bread",
+    "Ice Cream",
+    "Dessert",
+    "Drinks",
+  ].map((cat) => (
+    <button
+      key={cat}
+      className={category === cat ? "active" : ""}
+      onClick={() => setCategory(cat)}
+    >
+      {cat}
+    </button>
+  ))}
+</div>
+      {/* Menu Cards */}
 
-          <MenuCard
-            image={biriyani}
-            title="Chicken Biryani"
-            description="Traditional Andhra Biryani"
-            price="₹250"
-          />
+      <div className="menu-container">
 
-          <MenuCard
-            image={meals}
-            title="South Indian Meals"
-            description="Unlimited Veg Meals"
-            price="₹120"
-          />
+        {filteredItems.map((item) => (
+          <MenuCard key={item.id} item={item} />
+        ))}
 
-          <MenuCard
-            image={fish}
-            title="Fish Curry"
-            description="Authentic Andhra Fish Curry"
-            price="₹350"
-          />
-             <MenuCard
-            image={naan}
-            title="Butter Naan"
-            description="Soft Butter Naan"
-            price="₹40"
-          />
-          <MenuCard
-            image={paneer}
-            title="paneer biriyani"
-            description="Soft Butter Naan"
-            price="₹40"
-          />
-          <MenuCard
-            image={prawns}
-            title="prawns-biriyani"
-            description="Soft Butter Naan"
-            price="₹40"
-          />
-       
+      </div>
 
-        </div>
-
-      </section>
-
-      <Footer />
-    </>
+    </section>
   );
 }
 

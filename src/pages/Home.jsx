@@ -10,7 +10,7 @@ import Stats from "../components/Stats";
 function Home() {
   return (
     <div>
-        <Navbar/>
+        
         <Hero/>
         <Stats/>
         <Reviews/>

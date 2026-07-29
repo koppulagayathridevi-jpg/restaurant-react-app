@@ -1,37 +1,14 @@
-.menu-section{
-    padding:80px 8%;
-    background:#FFF5E6;
-    text-align:center;
-}
-
-.menu-section h1{
-    font-size:45px;
-    color:#8B0000;
-    margin-bottom:15px;
-}
-
-.menu-section p{
-    font-size:18px;
-    margin-bottom:50px;
-    color:#555;
-}
-
-.menu-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
-}
-
 .menu-card{
-    background:white;
-    border-radius:20px;
+    background:#fff;
+    border-radius:18px;
     overflow:hidden;
-    box-shadow:0 10px 20px rgba(0,0,0,.15);
-    transition:.4s;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    transition:.3s;
 }
 
 .menu-card:hover{
-    transform:translateY(-10px);
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
 }
 
 .menu-card img{
@@ -40,50 +17,52 @@
     object-fit:cover;
 }
 
-.menu-content{
-    padding:20px;
+.card-body{
+    padding:18px;
 }
 
-.menu-content h3{
-    color:#8B0000;
-    margin-bottom:10px;
+.card-body h3{
+    color:#7B241C;
+    font-size:26px;
+    margin-bottom:8px;
 }
 
-.menu-content p{
-    font-size:16px;
-    color:#555;
+.card-body p{
+    color:#666;
+    font-size:15px;
+    margin-bottom:18px;
 }
 
-.menu-content h4{
-    color:#FF9800;
-    margin:15px 0;
-    font-size:24px;
+.card-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
 }
 
-.menu-content button{
-    padding:12px 25px;
+.card-info span{
+    font-size:17px;
+}
+
+.price{
+    color:#ff6b00;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.menu-card button{
+    width:100%;
     border:none;
-    border-radius:30px;
-    background:#FF9800;
+    padding:14px;
+    border-radius:40px;
+    background:#8B2E21;
     color:white;
+    font-size:17px;
+    font-weight:600;
     cursor:pointer;
     transition:.3s;
 }
 
-.menu-content button:hover{
-    background:#E65100;
-}
-.order-btn{
-    background:#ff9800;
-    color:white;
-    border:none;
-    padding:10px 20px;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:16px;
-    transition:0.3s;
-}
-
-.order-btn:hover{
-    background:#e65100;
+.menu-card button:hover{
+    background:#ff8c00;
 }

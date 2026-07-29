@@ -1,9 +1,9 @@
 import "./Gallery.css";
 
 import mutton from "../assets/images/mutton.jpg";
-import potbiriyani from "../assets/images/pot-biriyani.jpg";
+import potbiryani from "../assets/images/pot-biryani.jpg";
 import paneer from "../assets/images/paneer.jpg";
-import biriyani from "../assets/images/biriyani.jpg";
+import chickenbiryani from "../assets/images/chicken-biryani.jpg";
 import meals from "../assets/images/meals.jpg";
 import fish from "../assets/images/fish-curry.jpg";
 import prawns from "../assets/images/prawns.jpg";
@@ -16,17 +16,17 @@ function Gallery() {
 
       <p>Explore our delicious dishes and restaurant ambience.</p>
 
-      <div className="gallery-container">
+     <div className="gallery-container">
 
-        <img src={mutton} alt="mutton" />
-        <img src={potbiriyani} alt="Restaurant" />
-        <img src={paneer} alt="Restaurant" />
-        <img src={biriyani} alt="Biryani" />
-        <img src={meals} alt="Meals" />
-        <img src={fish} alt="Fish Curry" />
-        <img src={prawns} alt="prawns" />
+  <img src={mutton} alt="Mutton" />
+  <img src={potbiryani} alt="Pot Biryani" />
+  <img src={paneer} alt="Paneer" />
+  <img src={chickenbiryani} alt="Chicken Biryani" />
+  <img src={meals} alt="Meals" />
+  <img src={fish} alt="Fish Curry" />
+  <img src={prawns} alt="Prawns" />
 
-      </div>
+</div>
 
     </section>
   );
