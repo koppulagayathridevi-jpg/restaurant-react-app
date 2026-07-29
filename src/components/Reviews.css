@@ -1,0 +1,18 @@
+.reviews{
+    padding:80px 8%;
+    background:#fff8f0;
+    text-align:center;
+}
+
+.reviews h1{
+    font-size:42px;
+    color:#4e342e;
+    margin-bottom:50px;
+}
+
+.review-container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}

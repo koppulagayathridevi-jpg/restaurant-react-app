@@ -1,0 +1,27 @@
+.review-card{
+    width:320px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.review-card:hover{
+    transform:translateY(-8px);
+}
+
+.review-card h2{
+    margin-bottom:15px;
+}
+
+.review-card p{
+    color:#555;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+.review-card h4{
+    color:#ff6b35;
+}
