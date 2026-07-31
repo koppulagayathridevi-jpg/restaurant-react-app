@@ -1,35 +1,65 @@
-import { useContext } from "react";
 import "./MenuCard.css";
+import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import { useNavigate } from "react-router-dom";
 
-function MenuCard({ item }) {
+function MenuCard({ food }) {
   const { addToCart } = useContext(CartContext);
-  const navigate=useNavigate();
-   const handleAddToCart = () => {
-    addToCart(item);
-    navigate("/cart");
+
+  const imageUrl = `http://localhost:5000/${food.image}`;
+
+  const handleAddToCart = () => {
+    addToCart(food);
   };
 
   return (
     <div className="menu-card">
 
-      <img src={item.image} alt={item.name} />
+      <div className="image-container">
 
-      <div className="card-body">
+        <img
+          src={imageUrl}
+          alt={food.name}
+          className="food-image"
+          onError={(e) => {
+            e.target.src =
+              "https://placehold.co/400x300?text=No+Image";
+          }}
+        />
 
-        <h3>{item.name}</h3>
+        <span className="category-badge">
+          {food.category}
+        </span>
 
-        <p>{item.description}</p>
+      </div>
 
-        <div className="card-info">
-          <span>⭐ {item.rating}</span>
-          <span className="price">₹{item.price}</span>
+      <div className="food-details">
+
+        <div className="title-row">
+
+          <h2>{food.name}</h2>
+
+          <span className="rating">
+            ⭐ 4.5
+          </span>
+
         </div>
 
-        <button onClick={() => addToCart(item)}>
-          🛒 Add to Cart
-        </button>
+        <p className="description">
+          {food.description}
+        </p>
+
+        <div className="bottom-row">
+
+          <h3>₹{food.price}</h3>
+
+          <button
+            className="cart-btn"
+            onClick={handleAddToCart}
+          >
+            🛒 Add
+          </button>
+
+        </div>
 
       </div>
 

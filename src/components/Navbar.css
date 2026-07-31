@@ -1,82 +1,132 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 8%;
-    background:#4e342e;
+.navbar {
+    /* background:#a90000; */
+    background:#4E342E;
+    height:150px;
+    padding-top:20px;
+    text-align:center;
     color:white;
 }
 
-.logo{
-    font-size:28px;
-    font-weight:bold;
-    color:#FFD700;
-}
 
-nav{
-    display:flex;
-    gap:35px;
-}
+/* Restaurant Logo + Name */
 
-nav a{
-    text-decoration:none;
-    color:white;
-    font-size:18px;
-    font-weight:600;
-    margin:0 15px;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:#FFD700;
-}
-
-/* Active Link */
-nav a.active{
-    color:#FFD700;
-    border-bottom:3px solid #FFD700;
-    padding-bottom:5px;
-}
-
-.book-btn{
-    background:#ff9800;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:17px;
-    transition:.3s;
-}
-
-.book-btn:hover{
-    background:#ff5722;
-}
-.cart-link{
-    position:relative;
-    text-decoration:none;
-    color:white;
-    font-weight:600;
-}
-
-.cart-count{
-    position:absolute;
-    top:-10px;
-    right:-18px;
-    background:red;
-    color:white;
-    width:22px;
-    height:22px;
-    border-radius:50%;
+.brand {
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:12px;
+    gap:10px;
+}
+
+
+.brand-icon {
+    font-size:32px;
+}
+
+
+.brand h1 {
+    margin:0;
+    font-size:30px;
+    font-family:Georgia, serif;
+    color:white;
+}
+
+
+/* Navigation */
+
+nav {
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:28px;
+}
+
+
+nav a {
+
+    color:white;
+    text-decoration:none;
+
+    font-size:22px;
     font-weight:bold;
+
+    font-family:Georgia, serif;
+
+    padding-bottom:8px;
+}
+
+
+/* Active Home */
+
+nav a.active {
+
+    /* color:#ffd700; */
+    color:#FFD54F;
+
+    border-bottom:4px solid #ffd700;
+
+}
+
+
+/* Cart Button */
+
+.cart-link {
+    padding:0 !important;
+    border:none !important;
+}
+
+
+.cart-box {
+
+    width:58px;
+    height:58px;
+
+    background:#ff5722;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+    margin-left:15px;
+}
+
+
+.cart-box svg {
+
+    font-size:30px;
+    color:white;
+
+}
+
+
+/* Cart Count */
+
+.cart-count {
+
+    position:absolute;
+
+    top:-10px;
+    right:-10px;
+
+
+    width:30px;
+    height:30px;
+
+    background:#ffb300;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    font-size:16px;
+    font-weight:bold;
+
 }

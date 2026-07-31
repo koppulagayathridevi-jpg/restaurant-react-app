@@ -1,62 +1,116 @@
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import MenuCard from "../components/MenuCard";
 import "./Menu.css";
 
-import menuItems from "../data/MenuData";
-import MenuCard from "../components/MenuCard";
-
 function Menu() {
+  const [foods, setFoods] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
- 
-  const filteredItems = menuItems.filter((item) => {
-  const categoryMatch =
-    category === "All" || item.category === category;
 
-  const searchMatch = item.name
-    .toLowerCase()
-    .includes(search.toLowerCase());
+  const categories = [
+    { name: "All", icon: "🍽️" },
+    { name: "Veg", icon: "🥗" },
+    { name: "Non-Veg", icon: "🍗" },
+    { name: "Drinks", icon: "🥤" },
+    { name: "Ice Cream", icon: "🍨" },
+  ];
 
-  return categoryMatch && searchMatch;
-});
+  useEffect(() => {
+    fetchFoods();
+  }, []);
+
+  const fetchFoods = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/foods");
+
+      if (Array.isArray(res.data)) {
+        setFoods(res.data);
+      } else if (Array.isArray(res.data.data)) {
+        setFoods(res.data.data);
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredFoods = foods.filter((food) => {
+    const categoryMatch =
+      category === "All" || food.category === category;
+
+    const searchMatch = food.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    return categoryMatch && searchMatch;
+  });
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <h1>Loading Menu...</h1>
+      </div>
+    );
+  }
+
   return (
-    <section className="menu-section">
-      
+    <div className="menu-page">
 
-      <h1>Our Special Menu</h1>
+      <div className="menu-banner">
 
-    
+        <h1>🍽 Bala Gayathri Restaurant</h1>
 
-      <div className="categories">
-  {[
-    "All",
-    "Veg",
-    "Non-Veg",
-    "Bread",
-    "Ice Cream",
-    "Dessert",
-    "Drinks",
-  ].map((cat) => (
-    <button
-      key={cat}
-      className={category === cat ? "active" : ""}
-      onClick={() => setCategory(cat)}
-    >
-      {cat}
-    </button>
-  ))}
-</div>
-      {/* Menu Cards */}
+        <p>
+          Fresh • Delicious • Affordable
+        </p>
 
-      <div className="menu-container">
+      </div>
 
-        {filteredItems.map((item) => (
-          <MenuCard key={item.id} item={item} />
+  
+
+      <div className="category-container">
+
+        {categories.map((cat) => (
+
+          <div
+            key={cat.name}
+            className={
+              category === cat.name
+                ? "category-card active"
+                : "category-card"
+            }
+            onClick={() => setCategory(cat.name)}
+          >
+
+            <h2>{cat.icon}</h2>
+
+            <p>{cat.name}</p>
+
+          </div>
+
         ))}
 
       </div>
 
-    </section>
+      <div className="menu-grid">
+
+        {filteredFoods.length > 0 ? (
+          filteredFoods.map((food) => (
+            <MenuCard
+              key={food._id}
+              food={food}
+            />
+          ))
+        ) : (
+          <h2>No Food Available</h2>
+        )}
+
+      </div>
+
+    </div>
   );
 }
 

@@ -1,82 +1,137 @@
-
-
-import { createContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
 function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
- const addToCart = (item) => {
-  const existingItem = cart.find((food) => food.id === item.id);
+  const addToCart = (food) => {
 
-  if (existingItem) {
-    setCart(
-      cart.map((food) =>
-        food.id === item.id
-          ? { ...food, quantity: food.quantity + 1 }
-          : food
-      )
+    const existing = cart.find(
+      item => item._id === food._id
     );
-  } else {
-    setCart([...cart, { ...item, quantity: 1 }]);
-  }
 
-  setMessage(`${item.name} added to cart!`);
+    if (existing) {
 
-  setTimeout(() => {
-    setMessage("");
-  }, 2000);
-};
+      setCart(
+        cart.map(item =>
+          item._id === food._id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item
+        )
+      );
 
+    } else {
 
-  const increaseQuantity = (id) => {
+      setCart([
+        ...cart,
+        {
+          ...food,
+          quantity: 1,
+        },
+      ]);
+
+    }
+
+    setMessage(`${food.name} added to cart`);
+
+    setTimeout(() => {
+      setMessage("");
+    }, 2000);
+
+  };
+
+  const increaseQuantity = (_id) => {
+
     setCart(
-      cart.map((item) =>
-        item.id === id
-          ? { ...item, quantity: item.quantity + 1 }
+      cart.map(item =>
+        item._id === _id
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
           : item
       )
     );
+
   };
 
-  const decreaseQuantity = (id) => {
+  const decreaseQuantity = (_id) => {
+
     setCart(
+
       cart
-        .map((item) =>
-          item.id === id
-            ? { ...item, quantity: item.quantity - 1 }
+        .map(item =>
+          item._id === _id
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
             : item
         )
-        .filter((item) => item.quantity > 0)
+
+        .filter(item => item.quantity > 0)
+
     );
+
   };
 
-  
-  const removeItem = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+  const removeItem = (_id) => {
+
+    setCart(
+      cart.filter(item => item._id !== _id)
+    );
+
   };
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  const clearCart = () => {
+    setCart([]);
+  };
 
   return (
+
     <CartContext.Provider
+
       value={{
+
         cart,
+
         addToCart,
+
         increaseQuantity,
+
         decreaseQuantity,
+
         removeItem,
+
+        clearCart,
+
         message,
+
       }}
+
     >
+
       {children}
+
     </CartContext.Provider>
+
   );
+
 }
 
 export default CartProvider;
