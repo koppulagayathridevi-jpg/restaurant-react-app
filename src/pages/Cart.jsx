@@ -64,15 +64,12 @@ function Cart() {
               key={item._id}
             >
 
-              {/* <img
-                src={`http://localhost:5000/${item.image}`}
-                alt={item.name}
-              /> */}
+             
               <img
   src={`https://restaurant-react-app-vp52.onrender.com/${item.image}`}
   alt={item.name}
 />
-console.log(cart);
+
    
 
               <div className="cart-info">
