@@ -23,8 +23,8 @@ function Menu() {
 
   const fetchFoods = async () => {
     try {
-      const res = await axios.get("https://restaurant-backend.vercel.app/api/foods");
-      // const res = await axios.get("https://restaurant-backend.onrender.com/api/foods");
+      // const res = await axios.get("https://restaurant-backend.vercel.app/api/foods");
+      const res = await axios.get("https://restaurant-backend.onrender.com/api/foods");
       // const res = await axios.get("http://localhost:5000/api/foods");
 
       if (Array.isArray(res.data)) {
