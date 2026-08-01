@@ -13,10 +13,11 @@ app.use(express.json());
 
 
 // images
-app.use(
- "/uploads",
- express.static(path.join(__dirname,"uploads"))
-);
+// app.use(
+//  "/uploads",
+//  express.static(path.join(__dirname,"uploads"))
+// );
+app.use("/uploads", express.static("uploads"));
 
 
 // food route

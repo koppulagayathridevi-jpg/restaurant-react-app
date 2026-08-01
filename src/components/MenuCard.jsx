@@ -16,7 +16,7 @@ function MenuCard({ food }) {
 
       <div className="image-container">
 
-        <img
+        {/* <img
           src={imageUrl}
           alt={food.name}
           className="food-image"
@@ -24,7 +24,12 @@ function MenuCard({ food }) {
             e.target.src =
               "https://placehold.co/400x300?text=No+Image";
           }}
-        />
+          
+        /> */}
+        <img
+  src={`https://restaurant-react-app-vp52.onrender.com/${food.image}`}
+  alt={food.name}
+/>
 
         <span className="category-badge">
           {food.category}
