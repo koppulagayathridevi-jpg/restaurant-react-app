@@ -9,6 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Cart from "./pages/Cart";
 import Navbar from "./components/Navbar";
 import Toast from "./components/Toast";
+import Checkout from "./pages/checkout";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
+        <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
     </>
   );
