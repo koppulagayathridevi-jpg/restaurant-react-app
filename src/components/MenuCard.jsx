@@ -26,7 +26,7 @@ function MenuCard({ food }) {
           }}
           
         /> */}
-        <img
+        <img className="food-image"
   src={`https://restaurant-react-app-vp52.onrender.com/${food.image}`}
   alt={food.name}
 />
