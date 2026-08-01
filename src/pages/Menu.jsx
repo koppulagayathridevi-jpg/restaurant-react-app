@@ -21,23 +21,42 @@ function Menu() {
     fetchFoods();
   }, []);
 
-  const fetchFoods = async () => {
-    try {
-      // const res = await axios.get("https://restaurant-backend.vercel.app/api/foods");
-      const res = await axios.get("https://restaurant-react-app-vp52.onrender.com");
-      // const res = await axios.get("http://localhost:5000/api/foods");
+//   const fetchFoods = async () => {
+//     try {
+//       // const res = await axios.get("https://restaurant-backend.vercel.app/api/foods");
+//       const res = await axios.get(
+//   "https://restaurant-react-app-vp52.onrender.com/api/foods"
+// );
+//       // const res = await axios.get("http://localhost:5000/api/foods");
+      
+//       if (Array.isArray(res.data)) {
+//         setFoods(res.data);
+//       } else if (Array.isArray(res.data.data)) {
+//         setFoods(res.data.data);
+//       }
+//     } catch (err) {
+//       console.log(err);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+const fetchFoods = async () => {
+  try {
+    const res = await axios.get(
+      "https://restaurant-react-app-vp52.onrender.com/api/foods"
+    );
 
-      if (Array.isArray(res.data)) {
-        setFoods(res.data);
-      } else if (Array.isArray(res.data.data)) {
-        setFoods(res.data.data);
-      }
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
+    console.log(res.data);
+
+    if (res.data.success) {
+      setFoods(res.data.data);
     }
-  };
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const filteredFoods = foods.filter((food) => {
     const categoryMatch =
